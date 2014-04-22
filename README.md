@@ -6,7 +6,7 @@ A couple notes - the gem is available on RubyGems.org - so just 'gem install zip
 
 This is my second gem - and I've written it the way I know how to write gems, which means using a lot of 'self.' tags on the methods as I never quite grasped why making a variable an instance of the class was better?  But anyway - please feel free to do with this as you like.  I'm happy to give something back to someone.
 
-I set it up to expect environment variables - you need to set ENV['ZIPWHIP_USERNAME'] and ENV['ZIPWHIP_PASSWORD'] in your environment for authentication.  Which means you need to sign up for their API.
+You should authenticate by calling ZipWhip.login(username,password) from your application.  This will set a session token for ZipWhip so you only have to auth once per session.  I recommend you setup environment variables and then call that from your application such that you don't checkin actual usernames and passwords to version control.  Something like username = ENV["ZIPWHIP_USERNAME"]; password = ENV["ZIPWHIP_PASSWORD"]; ZipWhip.login(username,password)
 
 The usage as of right now is :  ZipWhip.send_new_sms(to,msg)
 
